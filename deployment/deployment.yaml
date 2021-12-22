@@ -1,0 +1,28 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: mlflow-model
+  namespace: model-serving
+spec:
+  predictors:
+    - name: default
+      annotations:
+        seldon.io/no-engine: "true"
+      graph:
+        name: mlflow-model
+        type: MODEL
+      componentSpecs:
+        - spec:
+            containers:
+              - name: mlflow-model
+                image: edlongbottom/mlwebservice/bostonhousing:0.0.1
+                imagePullPolicy: IfNotPresent
+                securityContext:
+                  runAsUser: 0
+                ports:
+                  - containerPort: 8080
+                    name: http
+                    protocol: TCP
+                  - containerPort: 8081
+                    name: grpc
+                    protocol: TCP
