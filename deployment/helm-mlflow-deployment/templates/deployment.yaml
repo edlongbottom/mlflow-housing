@@ -1,0 +1,28 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.app.namespace }}
+spec:
+  predictors:
+    - name: default
+      annotations:
+        seldon.io/no-engine: "true"
+      graph:
+        name: {{ .Chart.Name }}
+        type: MODEL
+      componentSpecs:
+        - spec:
+            containers:
+              - name: {{ .Chart.Name }}
+                image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+                imagePullPolicy: {{ .Values.image.pullPolicy }}
+                securityContext:
+                  runAsUser: 0
+                ports:
+                  - containerPort: {{ .Values.service.portHTTP.containerPort }}
+                    name: {{ .Values.service.portHTTP.name }}
+                    protocol: {{ .Values.service.portHTTP.protocol }}
+                  - containerPort: {{ .Values.service.portGRCP.containerPort }}
+                    name: {{ .Values.service.portGRCP.name }}
+                    protocol: {{ .Values.service.portGRCP.protocol }}

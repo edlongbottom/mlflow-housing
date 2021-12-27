@@ -15,8 +15,8 @@ spec:
         - spec:
             containers:
               - name: mlflow-model
-                image: edlongbottom/mlwebservice/bostonhousing:0.0.1
-                imagePullPolicy: IfNotPresent
+                image: edlongbottom/mlwebservice/bostonhousing:0.0.3
+                imagePullPolicy: Never
                 securityContext:
                   runAsUser: 0
                 ports:

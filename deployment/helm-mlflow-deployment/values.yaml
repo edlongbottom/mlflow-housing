@@ -1,0 +1,17 @@
+replicaCount: 1
+app:
+  namespace: model-serving
+  env: dev
+image:
+  repository: edlongbottom/mlwebservice/bostonhousing 
+  tag: 0.0.3
+  pullPolicy: Never
+service:
+  portHTTP: 
+    name: http
+    protocol: TCP
+    containerPort: 8080 
+  portGRCP: 
+    name: grcp
+    protocol: TCP
+    containerPort: 8081
