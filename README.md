@@ -16,7 +16,7 @@ This repo is in two sections: Experimentation and Deployment.
 
 This phase includes Exploratory Data Analysis (EDA), feature engineering, and model building, training and evaluation. Notebooks are available in this folder each for EDA and model building with MLFlow, which is currently configured to create a local SQLite database for storing experiment data and save model artefacts locally under the Experimentation folder.   
 
-### Deployment
+## Deployment
 
 This folder includes a notebook and scripts for the deployment of a ML model or pipeline using a variety of approaches:
 1. Deploying on a local MLFlow REST server
