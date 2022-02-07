@@ -3,9 +3,9 @@ app:
   namespace: model-serving
   env: dev
 image:
-  repository: edlongbottom/mlwebservice/bostonhousing 
+  repository: edlongbottom/mlwebservice-bostonhousing 
   tag: 0.0.3
-  pullPolicy: Never
+  pullPolicy: IfNotPresent
 service:
   portHTTP: 
     name: http
